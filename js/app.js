@@ -25,33 +25,34 @@ function iniciarCronometro() {
     let hor = horas < 10 ? '0' + horas : horas;
 
     cronometro.textContent = `${hor}:${min}:${seg}`;
-    console.log(cronometro)
-
 }
 
 
 //-------------LOGICA----------------
 
-    let segundos = 0;
-    let minutos = 0;
-    let horas = 0;
-    let intervalo = null;
+let segundos = 0;
+let minutos = 0;
+let horas = 0;
+let intervalo = null;
 
-console.log(document.querySelector('#btnIniciar'))
-
-document.querySelector('#btnIniciar').addEventListener('click', () => {
-    if (!intervalo) {
+const iniciar = document.querySelector('#btnIniciar')
+iniciar.addEventListener('click', () => {
+    if(!intervalo) {
         intervalo = setInterval(iniciarCronometro, 1000);
         document.querySelector('#btnIniciar').disabled = true;
+        document.querySelector('#btnReiniciar').disabled = false;
+        document.querySelector('#btnPausar').disabled = false;
     }else{
         document.querySelector('#btnIniciar').disabled = false;
     }
-});
+})
 
-document.querySelector('#btnPausar').addEventListener('click', () => {
+const pausar = document.querySelector('#btnPausar')
+pausar.addEventListener('click', () => {
     clearInterval(intervalo);
     intervalo = null;
     document.querySelector('#btnIniciar').disabled = false;
+    document.querySelector('#btnPausar').disabled = true;
 });
 
 document.querySelector('#btnReiniciar').addEventListener('click', () => {
@@ -62,4 +63,6 @@ document.querySelector('#btnReiniciar').addEventListener('click', () => {
     horas = 0;
     document.querySelector('h1').textContent = '00:00:00';
     document.querySelector('#btnIniciar').disabled = false;
+    document.querySelector('#btnReiniciar').disabled = true;
+    document.querySelector('#btnPausar').disabled = true;
 })
