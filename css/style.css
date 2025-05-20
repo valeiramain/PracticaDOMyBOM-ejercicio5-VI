@@ -37,13 +37,19 @@ main {
 
 
 .bg-form-secondary-subtle-transparent {
-  background-color: rgba(145, 155, 127, 0.6); /* gris Bootstrap con 60% de opacidad */
+  background-color: rgba(145, 155, 127, 0.4);
 }
 
 h1.display-1 {
     font-size: 12vw; /* Escala según el ancho de la pantalla */
 }
 
-h2.display-3 {
-    font-size: 5vw;
-}
+.btn-shadow {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-shadow:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
